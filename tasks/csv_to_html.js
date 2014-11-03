@@ -113,7 +113,7 @@ module.exports = function(grunt) {
           , row
           ;
 
-        // Loop through csv file and compile html
+        // loop through csv file and compile html
         for(var i=0,l=rows.length;i<l;i++){
           row = _.object(headers, rows[i]);
           // Any column with json prefix will be parsed as JSON
@@ -129,17 +129,15 @@ module.exports = function(grunt) {
             grunt.file.write(f.dest + '/' + row[headers[0]] + '.html', output(row));
           }
         }
-
+        
         // Print a success message.
-        grunt.log.writeln('File "' + f.dest + '" created.');
+        grunt.log.writeln('Files added to the "' + f.dest + '" directory.');
 
         if (fi===fl)
           done();
         else
           fi++;
-
       });
-
     });
   });
 };
