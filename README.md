@@ -18,7 +18,7 @@ Once the plugin has been installed, it may be enabled inside your Gruntfile with
 ## The "csv_to_html" task
 
 ### Overview
-This grunt plugin provides a simple task to compile a HTML file from a data source (csv file) and a template (mustache/handlebars file).
+This grunt plugin provides a simple task to compile a series of HTML files from a data source (csv file) and a template (mustache/handlebars file).
 
 Why csv? Spreadsheets are understood by most non technical minded users who might be supplying content for a web project. 
 
@@ -30,7 +30,7 @@ In your project's Gruntfile, add a section named `csv_to_html` to the data objec
       csv_to_html: {
         your_target: {
           files: {
-            'tmp/compiled.html': ['test/fixtures/data.csv', 'test/fixtures/tpl.mustache']
+            'tmp': ['test/fixtures/data.csv', 'test/fixtures/tpl.mustache']
           }
         },
       },
@@ -88,7 +88,7 @@ Each target will now use a "global" data file
 
 Each target will now use a "global" destination file
 
-    data : '/path/compiled.html'
+    data : '/path/'
 
 **csv**
 
