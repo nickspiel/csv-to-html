@@ -113,7 +113,7 @@ module.exports = function(grunt) {
           , row
           ;
 
-        // loop through csv file and compile html
+        // Loop through csv file and compile html
         for(var i=0,l=rows.length;i<l;i++){
           row = _.object(headers, rows[i]);
           // Any column with json prefix will be parsed as JSON
@@ -124,14 +124,11 @@ module.exports = function(grunt) {
             if(/^markdown_/.test(key)){
               row[key.replace('markdown_','')] = markdown.toHTML(row[key]);
             }
+            output = Handlebars.compile(tpl);
+            // Build out individual files
+            grunt.file.write(f.dest + '/' + row[headers[0]] + '.html', output(row));
           }
-          output = Handlebars.compile(tpl);
-
-          html += output(row);
         }
-
-        // Write the destination file.
-        grunt.file.write(f.dest, html);
 
         // Print a success message.
         grunt.log.writeln('File "' + f.dest + '" created.');
@@ -145,5 +142,4 @@ module.exports = function(grunt) {
 
     });
   });
-
 };
