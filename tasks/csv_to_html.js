@@ -125,8 +125,11 @@ module.exports = function(grunt) {
               row[key.replace('markdown_','')] = markdown.toHTML(row[key]);
             }
             output = Handlebars.compile(tpl);
+           
             // Build out individual files
             grunt.file.write(f.dest + '/' + row[headers[0]] + '.html', output(row));
+            // TODO: Cleanse the header name
+            // TODO: Add options to the grunt file so the user can choose a header field for the name
           }
         }
         
